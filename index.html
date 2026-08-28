@@ -1,1 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>蓁流量 ZHEN FLOW｜口碑行銷</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background: #fafafa;
+    color: #202020;
+    line-height: 1.8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #eeeeee;
+}
+
+.nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    font-size: 13px;
+    font-weight: 400;
+    color: #999;
+    margin-left: 8px;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 32px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #b8892d;
+}
+
+.hero {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(190,145,55,0.13), transparent 30%),
+        linear-gradient(135deg, #ffffff, #f7f7f7);
+}
+
+.hero-inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 90px 28px;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid #d9d9d9;
+    border-radius: 50px;
+    padding: 8px 18px;
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 130px);
+    line-height: 1;
+    letter-spacing: -4px;
+    margin-bottom: 28px;
+}
+
+.hero h2 {
+    font-size: clamp(26px, 4vw, 48px);
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    max-width: 650px;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 38px;
+}
+
+.button {
+    display: inline-block;
+    background: #222;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #b8892d;
+    transform: translateY(-3px);
+}
+
+section {
+    padding: 100px 28px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    margin-bottom: 55px;
+}
+
+.section-title small {
+    color: #b8892d;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.section-title h2 {
+    font-size: 48px;
+    margin-top: 8px;
+}
+
+.section-title p {
+    color: #777;
+    max-width: 650px;
+}
+
+.services {
+    background: white;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #e8e8e8;
+    border-radius: 18px;
+    padding: 34px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    border-color: #d6b36a;
+}
+
+.card-number {
+    color: #b8892d;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.card h3 {
+    font-size: 24px;
+    margin: 18px 0 12px;
+}
+
+.card p {
+    color: #777;
+}
+
+.about {
+    background: #202020;
+    color: white;
+}
+
+.about .section-title p {
+    color: #aaa;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.about-text {
+    font-size: 18px;
+    color: #ccc;
+}
+
+.about-box {
+    border: 1px solid #555;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.about-box strong {
+    display: block;
+    font-size: 42px;
+    color: #d6b36a;
+}
+
+.contact {
+    background: #f5f5f5;
+}
+
+.contact-box {
+    background: white;
+    border-radius: 22px;
+    padding: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.contact-info p {
+    margin: 8px 0;
+    color: #666;
+}
+
+footer {
+    background: #111;
+    color: #aaa;
+    text-align: center;
+    padding: 35px 20px;
+    font-size: 13px;
+}
+
+.gold {
+    color: #b8892d;
+}
+
+@media (max-width: 800px) {
+    nav {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 65px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section {
+        padding: 70px 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <div class="logo">
+            蓁流量
+            <span>ZHEN FLOW</span>
+        </div>
+
+        <nav>
+            <a href="#services">服務</a>
+            <a href="#about">關於我們</a>
+            <a href="#why">為什麼選擇我們</a>
+            <a href="#contact">聯絡我們</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+
+        <div class="badge">
+            ZHEN FLOW · REPUTATION MARKETING
+        </div>
+
+        <h1>蓁流量</h1>
+
+        <h2>讓好口碑，帶來真流量。</h2>
+
+        <p>
+            專注於口碑行銷、品牌聲量與社群曝光，
+            協助品牌被更多人看見、建立信任，
+            讓每一次曝光，都成為品牌成長的力量。
+        </p>
+
+        <a class="button" href="#contact">
+            立即了解服務 →
+        </a>
+
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="container">
+
+        <div class="section-title">
+            <small>OUR SERVICES</small>
+            <h2>我們能為你做什麼？</h2>
+            <p>
+                從 Google 商家口碑到社群平台互動，
+                打造更有聲量、更有存在感的品牌形象。
+            </p>
+        </div>
+
+        <div class="service-grid">
+
+            <div class="card">
+                <div class="card-number">01 / GOOGLE</div>
+                <h3>Google 商家口碑</h3>
+                <p>
+                    提升品牌在 Google 商家上的口碑與信任感，
+                    讓更多潛在客戶願意了解你的品牌。
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-number">02 / FACEBOOK</div>
+                <h3>Facebook 社群互動</h3>
+                <p>
+                    協助品牌提升留言、互動與人氣，
+                    增加社群內容的討論度與曝光。
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-number">03 / INSTAGRAM</div>
+                <h3>Instagram 品牌人氣</h3>
+                <p>
+                    打造更有吸引力的社群聲量，
+                    提升品牌在 Instagram 上的曝光。
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-number">04 / THREADS</div>
+                <h3>Threads 社群聲量</h3>
+                <p>
+                    透過社群互動與內容曝光，
+                    讓品牌更容易進入使用者的視線。
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-number">05 / TIKTOK</div>
+                <h3>TikTok 短影音曝光</h3>
+                <p>
+                    搭配短影音平台特性，
+                    幫助品牌增加曝光與人氣。
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-number">06 / SOCIAL</div>
+                <h3>社群人氣經營</h3>
+                <p>
+                    依照不同平台特性規劃，
+                    建立品牌長期的網路影響力。
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+
+        <div class="section-title">
+            <small>ABOUT ZHEN FLOW</small>
+            <h2>讓品牌被看見。</h2>
+            <p>
+                口碑，是品牌最有力量的資產。
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+                <p>
+                    蓁流量 ZHEN FLOW 專注於品牌口碑、
+                    社群人氣與網路聲量經營。
+                </p>
+
+                <br>
+
+                <p>
+                    我們相信，當更多人看見一個品牌，
+                    並且願意與品牌互動，
+                    就能逐漸累積信任與影響力。
+                </p>
+            </div>
+
+            <div class="about-box">
+                <strong>ZHEN</strong>
+                讓品牌聲量持續流動，
+                讓好口碑成為真正的流量。
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="why">
+    <div class="container">
+
+        <div class="section-title">
+            <small>WHY ZHEN FLOW</small>
+            <h2>為什麼選擇蓁流量？</h2>
+        </div>
+
+        <div class="service-grid">
+
+            <div class="card">
+                <div class="card-number">01</div>
+                <h3>多平台經營</h3>
+                <p>
+                    Google、Facebook、Instagram、
+                    Threads、TikTok 等平台皆可規劃。
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-number">02</div>
+                <h3>提升品牌聲量</h3>
+                <p>
+                    讓品牌增加網路上的曝光與討論度，
+                    提升被看見的機會。
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-number">03</div>
+                <h3>長期品牌經營</h3>
+                <p>
+                    不只是短期人氣，更重視品牌長期的
+                    網路形象與影響力。
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+
+        <div class="section-title">
+            <small>CONTACT</small>
+            <h2>一起讓品牌更有聲量。</h2>
+        </div>
+
+        <div class="contact-box">
+
+            <div class="contact-info">
+                <h3>蓁流量 ZHEN FLOW</h3>
+
+                <p>
+                    LINE：<span class="gold">maybe6044</span>
+                </p>
+
+                <p>
+                    Email：maybe06044@gmail.com
+                </p>
+
+                <p>
+                    電話：敬請期待
+                </p>
+
+                <p>
+                    地址：敬請期待
+                </p>
+            </div>
+
+            <a class="button" href="https://line.me/ti/p/~maybe6044">
+                加入 LINE →
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 蓁流量 ZHEN FLOW · Reputation Marketing
+</footer>
+
+</body>
+</html>
